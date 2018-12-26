@@ -108,6 +108,18 @@ void usage(char *progname)
 
 /*
  ***************************************************************************
+ * Print message and exit.
+ ***************************************************************************
+ */
+void print_message(void)
+{
+    printf("new flag!\n");
+    printf("(C) Fedor Shkolnikov\n");
+    exit(0);
+}
+
+/*
+ ***************************************************************************
  * Set disk output unit. Unit will be kB/s unless POSIXLY_CORRECT
  * environment variable has been set, in which case the output will be
  * expressed in blocks/s.
@@ -2048,10 +2060,10 @@ int main(int argc, char **argv)
 					report_set = TRUE;
 					break;
 
-                                case 'H':
-					/* Display stats only for the groups */
-					flags |= I_D_GROUP_TOTAL_ONLY;
-					break;
+                case 'H':
+                /* Display stats only for the groups */
+                flags |= I_D_GROUP_TOTAL_ONLY;
+                break;
 
 				case 'h':
 					/*
@@ -2081,6 +2093,11 @@ int main(int argc, char **argv)
 					/* Display device mapper logical name */
 					flags |= I_D_DEVMAP_NAME;
 					break;
+
+                case 'M':
+                    /* Display message and exit */
+                    print_message();
+                    break;
 
 				case 'p':
 					/* If option -p is grouped then it cannot take an arg */
